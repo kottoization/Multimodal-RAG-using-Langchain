@@ -36,10 +36,13 @@ embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
 
 db = FAISS.load_local("faiss_index", embeddings)
 
-prompt_template = """You are a vet doctor and an expert in analyzing dog's health.
+prompt_template = """You are teacher and an expert in preparing notes that are easy to study from.
 Answer the question based only on the following context, which can include text, images and tables:
 {context}
 Question: {question}
+Try to provide a brief answer to the question or to describe given area, make it easy to read and to learn from.
+Provide all important definitions or equations with a few examples. If it would be helpfull you can also add some example charts for the context.
+If asked for a summary than make a summary of all of the most crutial information but make it short and in form of a cheatsheet.
 Don't answer if you are not sure and decline to answer and say "Sorry, I don't have much information about it."
 Just return the helpful answer in as much as detailed possible.
 Answer:
